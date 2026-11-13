@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f4">
+  <title>Delivery Prediction</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">E-commerce logistics</p>
+      <h1>Delivery prediction</h1>
+      <p class="intro">Enter the order and shipping details to estimate whether the delivery will be late.</p>
+    </header>
+
+    <form id="prediction-form">
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <h2>Customer</h2>
+            <p>Customer profile and delivery location</p>
+          </div>
+        </div>
+        <div class="field-grid">
+          <label>Age
+            <input name="customer_age" type="number" min="18" max="69" step="1" value="45" required>
+          </label>
+          <label>Gender
+            <select name="customer_gender" required>
+              <option>Male</option><option>Female</option><option>Other</option>
+            </select>
+          </label>
+          <label>City
+            <select name="customer_city" required>
+              <option>Los Angeles</option><option>San Diego</option><option>Dallas</option>
+              <option>Phoenix</option><option>San Antonio</option><option>Chicago</option>
+              <option>New York</option><option>Philadelphia</option><option>Houston</option>
+            </select>
+          </label>
+          <label>State
+            <select name="customer_state" required>
+              <option>CA</option><option>TX</option><option>AZ</option><option>IL</option><option>NY</option><option>PA</option>
+            </select>
+          </label>
+          <label>Income
+            <input name="customer_income" type="number" min="5210.84" max="461493.44" step="0.01" value="42718.8" required>
+          </label>
+          <label>Customer rating
+            <input name="customer_rating" type="number" min="1" max="5" step="0.1" value="2.9" required>
+          </label>
+          <label>Order frequency
+            <input name="customer_order_frequency" type="number" min="1" max="15" step="1" value="3" required>
+          </label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <h2>Order</h2>
+            <p>Product, payment, and order timing</p>
+          </div>
+        </div>
+        <div class="field-grid">
+          <label>Product category
+            <select name="product_category" required>
+              <option>Clothing</option><option>Books</option><option>Automotive</option><option>Toys</option>
+              <option>Home &amp; Kitchen</option><option>Beauty</option><option>Electronics</option><option>Sports</option>
+            </select>
+          </label>
+          <label>Product price
+            <input name="product_price" type="number" min="5" max="575.81" step="0.01" value="137.54" required>
+          </label>
+          <label>Quantity
+            <input name="quantity" type="number" min="1" max="9" step="1" value="1" required>
+          </label>
+          <label>Discount (%)
+            <input name="discount_percent" type="number" min="0" max="30" step="1" value="0" required>
+          </label>
+          <label>Order value
+            <input name="order_value" type="number" min="3.5" max="1927.52" step="0.01" value="137.54" required>
+          </label>
+          <label>Payment method
+            <select name="payment_method" required>
+              <option>Debit Card</option><option>Credit Card</option><option>UPI</option>
+              <option>Cash on Delivery</option><option>PayPal</option>
+            </select>
+          </label>
+          <label>Order priority
+            <select name="order_priority" required>
+              <option>Medium</option><option>High</option><option>Low</option><option>Critical</option>
+            </select>
+          </label>
+          <label>Order year
+            <input name="order_year" type="number" min="2020" max="2025" step="1" value="2025" required>
+          </label>
+          <label>Order month
+            <input name="order_month" type="number" min="1" max="12" step="1" value="4" required>
+          </label>
+          <label>Order day
+            <input name="order_day" type="number" min="1" max="31" step="1" value="8" required>
+          </label>
+          <label>Day of week
+            <input name="order_dayofweek" type="number" min="0" max="6" step="1" value="1" required>
+          </label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <h2>Seller</h2>
+            <p>Seller location and performance</p>
+          </div>
+        </div>
+        <div class="field-grid">
+          <label>Seller city
+            <select name="seller_city" required>
+              <option>Houston</option><option>Phoenix</option><option>San Antonio</option><option>New York</option>
+              <option>Dallas</option><option>Philadelphia</option><option>San Diego</option><option>Los Angeles</option><option>Chicago</option>
+            </select>
+          </label>
+          <label>Seller rating
+            <input name="seller_rating" type="number" min="2" max="5" step="0.1" value="3.7" required>
+          </label>
+          <label>Experience (years)
+            <input name="seller_experience_years" type="number" min="1" max="14" step="1" value="7" required>
+          </label>
+          <label>Reliability score
+            <input name="seller_reliability_score" type="number" min="28" max="100" step="0.1" value="74.4" required>
+          </label>
+          <label>Performance score
+            <input name="seller_performance_score" type="number" min="31.6" max="100" step="0.1" value="74.3" required>
+          </label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <h2>Shipping</h2>
+            <p>Package, warehouse, and carrier details</p>
+          </div>
+        </div>
+        <div class="field-grid">
+          <label>Shipping method
+            <select name="shipping_method" required>
+              <option>Same-Day</option><option>Standard</option><option>Express</option><option>Economy</option>
+            </select>
+          </label>
+          <label>Carrier
+            <select name="carrier" required>
+              <option>OnTrac</option><option>UPS</option><option>USPS</option><option>DHL</option><option>FedEx</option>
+            </select>
+          </label>
+          <label>Warehouse distance (km)
+            <input name="warehouse_distance_km" type="number" min="10" max="3000" step="0.1" value="400.7" required>
+          </label>
+          <label>Package weight (kg)
+            <input name="package_weight_kg" type="number" min="0.1" max="40.05" step="0.01" value="2.66" required>
+          </label>
+          <label>Package volume
+            <input name="package_volume" type="number" min="20" max="17343.1" step="0.1" value="677.3" required>
+          </label>
+          <label>Processing time (hours)
+            <input name="processing_time_hours" type="number" min="2" max="96" step="0.1" value="2.1" required>
+          </label>
+          <label>Dispatch delay (hours)
+            <input name="dispatch_delay_hours" type="number" min="0" max="46.2" step="0.1" value="2.3" required>
+          </label>
+          <label>Estimated delivery (days)
+            <input name="estimated_delivery_days" type="number" min="1" max="13" step="1" value="1" required>
+          </label>
+          <label>Distance-to-delivery ratio
+            <input name="distance_to_delivery_ratio" type="number" min="1.43" max="499.95" step="0.01" value="400.7" required>
+          </label>
+          <label>Shipping risk score
+            <input name="shipping_risk_score" type="number" min="0.2" max="37" step="0.1" value="3.4" required>
+          </label>
+          <label>Delivery efficiency score
+            <input name="delivery_efficiency_score" type="number" min="22.4" max="99" step="0.1" value="97.3" required>
+          </label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <div>
+            <h2>Conditions</h2>
+            <p>Weather, traffic, and seasonal factors</p>
+          </div>
+        </div>
+        <div class="field-grid">
+          <label>Weather
+            <select name="weather_condition" required>
+              <option>Clear</option><option>Fog</option><option>Storm</option><option>Rain</option><option>Snow</option>
+            </select>
+          </label>
+          <label>Traffic
+            <select name="traffic_level" required>
+              <option>Low</option><option>Medium</option><option>Jam</option><option>High</option>
+            </select>
+          </label>
+          <label>Holiday period
+            <select name="holiday_period" required><option value="0">No</option><option value="1">Yes</option></select>
+          </label>
+          <label>Weekend order
+            <select name="weekend_order" required><option value="0">No</option><option value="1">Yes</option></select>
+          </label>
+          <label>Peak season
+            <select name="peak_season" required><option value="0">No</option><option value="1">Yes</option></select>
+          </label>
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <button id="submit-button" type="submit">Predict delivery</button>
+        <p id="result" class="result" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <footer>Predictions are estimates and may not reflect actual delivery outcomes.</footer>
+  </main>
+</body>
+</html>

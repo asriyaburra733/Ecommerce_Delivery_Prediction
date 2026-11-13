@@ -1,9 +1,25 @@
+import os
+
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 import joblib
 
 app=FastAPI(title="Ecommerce Delivery Predictions")
+
+frontend_origins = [
+    origin.strip().rstrip("/")
+    for origin in os.getenv("FRONTEND_ORIGINS", "").split(",")
+    if origin.strip()
+]
+frontend_origins.extend(["http://localhost:5500", "http://127.0.0.1:5500"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=frontend_origins,
+    allow_methods=["POST"],
+    allow_headers=["Content-Type"],
+)
 
 model=joblib.load("ecommerce_delivery_predictions.pkl")
 
