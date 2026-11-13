@@ -49,6 +49,12 @@ class Ecommerce_delivery(BaseModel):
     order_dayofweek:int
 
     ### Prediction 
+@app.get("/")
+def home():
+    return {
+        "message": "Welcome to Ecommerce Delivery Prediction API",
+        "status": "FastAPI is running successfully"
+    }
 @app.post("/predict")
 def predict(data:Ecommerce_delivery):
         input_data = pd.DataFrame([{
