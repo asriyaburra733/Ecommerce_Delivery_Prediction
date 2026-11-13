@@ -1,12 +1,8 @@
 
+fastapi
+pydantic
 pandas
 numpy
-matplotlib
-seaborn
 scikit-learn
 imbalanced-learn
 joblib
-fastapi
-uvicorn
-streamlit
-pydantic
