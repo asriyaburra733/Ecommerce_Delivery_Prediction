@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ecommerce-delivery-prediction-3.onrender.com";
+const API_BASE_URL = "https://ecommerce-delivery-prediction-2.onrender.com";
 
 const form = document.querySelector("#prediction-form");
 const submitButton = document.querySelector("#submit-button");
